@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ===== Custom Theme ===== */
+@theme {
+  --color-bg-primary: #0f0f0f;
+  --color-bg-card: #1a1a1a;
+  --color-bg-card-hover: #222222;
+  --color-accent: #e50914;
+  --color-accent-hover: #ff1a25;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #666666;
+  --color-border: #2a2a2a;
+  --color-skeleton: #2a2a2a;
+  --color-skeleton-shimmer: #333333;
+  --font-family-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ===== Base Styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===== Skeleton Loading Animation ===== */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-skeleton) 25%,
+    var(--color-skeleton-shimmer) 50%,
+    var(--color-skeleton) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ===== Hero Gradient ===== */
+@keyframes hero-gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #0f0f0f 0%,
+    #1a0a0a 25%,
+    #0f0f0f 50%,
+    #0a0a1a 75%,
+    #0f0f0f 100%
+  );
+  background-size: 400% 400%;
+  animation: hero-gradient 15s ease infinite;
+}
+
+/* ===== Horizontal scroll ===== */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Fade-in animation ===== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* ===== Pulse glow for accent ===== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(229, 9, 20, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+
+
+/* ===== Subtitle overlay — fullscreen mode ===== */
+/* When the browser is in fullscreen, the iframe takes over the whole screen.
+   We use position:fixed with the highest possible z-index so the subtitle
+   renders above the fullscreen iframe layer. */
+.subtitle-overlay-fullscreen {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(10px);
+  will-change: transform;
+  background: rgba(0, 0, 0, 0.88);
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 8px;
+  max-width: 80vw;
+  text-align: center;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  /* Maximum possible z-index to float above fullscreen iframe */
+  z-index: 2147483647;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
