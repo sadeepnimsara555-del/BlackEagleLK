@@ -2,6 +2,8 @@
 
 BlackEagleLK is a movie streaming and discovery website built with React and Vite. It is designed to give users a cinematic browsing experience with a polished movie detail page, searchable catalog, category pages, and built-in subtitle controls.
 
+This project has been deployed on Vercel. View the live demo here: https://blackeaglelkmovie.vercel.app/
+
 ## What the site is meant to be
 
 This site is meant to be a dark, premium movie platform where users can:
