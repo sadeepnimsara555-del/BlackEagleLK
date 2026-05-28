@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getPopularMovies, getTopRatedMovies, getTrendingMovies, get2026Movies, getLanguageMovies } from '../api/tmdb';
+import { getPopularMovies, getTopRatedMovies, getTrendingMovies, get2026Movies, getLanguageMovies, getGenreMovies } from '../api/tmdb';
 import MovieScrollRow from '../components/MovieScrollRow';
 
 export default function HomePage() {
@@ -11,6 +11,7 @@ export default function HomePage() {
   const [tamilMovies, setTamilMovies] = useState([]);
   const [hindiMovies, setHindiMovies] = useState([]);
   const [koreanMovies, setKoreanMovies] = useState([]);
+  const [cartoonMovies, setCartoonMovies] = useState([]);
 
   const [loadingTrending, setLoadingTrending] = useState(true);
   const [loading2026, setLoading2026] = useState(true);
@@ -20,6 +21,7 @@ export default function HomePage() {
   const [loadingTamil, setLoadingTamil] = useState(true);
   const [loadingHindi, setLoadingHindi] = useState(true);
   const [loadingKorean, setLoadingKorean] = useState(true);
+  const [loadingCartoon, setLoadingCartoon] = useState(true);
 
   useEffect(() => {
     getTrendingMovies()
@@ -61,6 +63,11 @@ export default function HomePage() {
       .then((res) => setKoreanMovies(res.data.results))
       .catch(() => {})
       .finally(() => setLoadingKorean(false));
+
+    getGenreMovies(16)
+      .then((res) => setCartoonMovies(res.data.results))
+      .catch(() => {})
+      .finally(() => setLoadingCartoon(false));
   }, []);
 
   return (
@@ -134,6 +141,15 @@ export default function HomePage() {
         loading={loadingKorean}
         showNumbers={false}
         seeAllPath="/category/korean"
+      />
+
+      {/* 10. Cartoon Movies */}
+      <MovieScrollRow
+        title="Cartoon Movies"
+        movies={cartoonMovies}
+        loading={loadingCartoon}
+        showNumbers={false}
+        seeAllPath="/category/cartoon"
       />
     </div>
   );

@@ -18,6 +18,7 @@ export const getTopRatedMovies = (page = 1) => tmdb.get('/movie/top_rated', { pa
 export const getTrendingMovies = () => tmdb.get('/trending/movie/week')
 export const get2026Movies = (page = 1) => tmdb.get('/discover/movie', { params: { primary_release_year: 2026, sort_by: 'popularity.desc', page } })
 export const getLanguageMovies = (language, page = 1) => tmdb.get('/discover/movie', { params: { with_original_language: language, sort_by: 'popularity.desc', page } })
+export const getGenreMovies = (genreId, page = 1) => tmdb.get('/discover/movie', { params: { with_genres: genreId, sort_by: 'popularity.desc', page } })
 export const searchMovies = (query) => tmdb.get('/search/movie', { params: { query } })
 export const getMovieDetails = (id) => tmdb.get(`/movie/${id}`)
 export const getMovieCredits = (id) => tmdb.get(`/movie/${id}/credits`)
