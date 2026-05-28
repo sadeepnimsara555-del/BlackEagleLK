@@ -5,6 +5,7 @@ import SearchPage from './pages/SearchPage'
 import MovieDetailPage from './pages/MovieDetailPage'
 import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from './pages/NotFoundPage'
+import SmartChatbot from './components/SmartChatbot'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
+      <SmartChatbot />
       <footer className="border-t border-border/50 py-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
           <p className="text-text-muted text-sm">
