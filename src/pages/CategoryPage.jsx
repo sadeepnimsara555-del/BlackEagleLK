@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getPopularMovies, getTopRatedMovies, get2026Movies, getLanguageMovies, getGenreMovies } from '../api/tmdb';
+import { getPopularMovies, getTopRatedMovies, get2026Movies, getLanguageMovies, getGenreMovies, getBarbieMovies } from '../api/tmdb';
 import MovieCard from '../components/MovieCard';
 import MovieCardSkeleton from '../components/MovieCardSkeleton';
 
@@ -36,6 +36,10 @@ const CATEGORY_CONFIG = {
   cartoon: {
     label: 'Cartoon Movies',
     fetcher: (page) => getGenreMovies(16, page),
+  },
+  barbie: {
+    label: 'Barbie Movies',
+    fetcher: getBarbieMovies,
   },
 };
 
