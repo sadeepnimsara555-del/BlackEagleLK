@@ -21,8 +21,14 @@ function App() {
         </Routes>
       </main>
       <SmartChatbot />
-      <footer className="border-t border-border/50 py-8 mt-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 text-center">
+      <footer
+        className="w-full border-t border-border/50 py-8 mt-16 text-center"
+        style={{ width: '100%', textAlign: 'center' }}
+      >
+        <div
+          className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center text-center"
+          style={{ width: '100%', margin: '0 auto', textAlign: 'center' }}
+        >
           <p className="text-text-muted text-sm">
             © {new Date().getFullYear()} BlackEagleLK. All rights reserved.
           </p>
